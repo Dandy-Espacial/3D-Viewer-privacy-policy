@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms and Conditions of Use | LambDev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --primary-light: #eff6ff;
+      --text-main: #1f2937;
+      --text-muted: #4b5563;
+      --text-light: #6b7280;
+      --bg-page: #f8fafc;
+      --bg-card: #ffffff;
+      --border-color: #e2e8f0;
+      --badge-bg: #e0e7ff;
+      --badge-text: #3730a3;
+      --warning-bg: #fffbeb;
+      --warning-border: #f59e0b;
+      --warning-text: #92400e;
+      --code-bg: #f1f5f9;
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-page);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 0 0 60px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Top Sticky Minimalist Navbar */
+    .top-navbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-badge {
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 2px 8px;
+      border-radius: 9999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Floating / Top Bar TOC Trigger Button */
+    .toc-open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.2s ease;
+    }
+
+    .toc-open-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .toc-open-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    /* Floating button for quick access on scroll */
+    .floating-toc-btn {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      z-index: 45;
+      background: #0f172a;
+      color: #ffffff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 9999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .floating-toc-btn:hover {
+      background: #1e293b;
+      transform: translateY(-2px);
+    }
+
+    .floating-toc-btn svg {
+      width: 20px;
+      height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    /* Drawer Backdrop */
+    .drawer-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.45);
+      backdrop-filter: blur(2px);
+      z-index: 50;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .drawer-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    /* Off-Canvas Sliding Drawer */
+    .drawer {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 340px;
+      max-width: 85vw;
+      height: 100%;
+      background: var(--bg-card);
+      z-index: 60;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      flex-direction: column;
+      transform: translateX(-100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .drawer.active {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 20px 24px;
+      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fafafa;
+    }
+
+    .drawer-header h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    .drawer-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.4rem;
+      line-height: 1;
+      color: var(--text-light);
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+
+    .drawer-close-btn:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+
+    .drawer-nav {
+      padding: 16px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .toc-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .toc-list a {
+      color: var(--text-main);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 10px 14px;
+      border-radius: 8px;
+      display: block;
+      transition: background 0.15s, color 0.15s, transform 0.15s;
+      border-left: 3px solid transparent;
+    }
+
+    .toc-list a:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+      transform: translateX(4px);
+    }
+
+    .toc-list a.active {
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 600;
+      border-left: 3px solid var(--primary);
+    }
+
+    /* Main Container & Card Layout */
+    .container {
+      max-width: 860px;
+      margin: 40px auto 0;
+      padding: 0 20px;
+    }
+
+    .content-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 48px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    /* Header styling */
+    .doc-header {
+      margin-bottom: 36px;
+      padding-bottom: 28px;
+      border-bottom: 2px solid var(--border-color);
+    }
+
+    .doc-header h1 {
+      font-size: 2.1rem;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .meta-box {
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      padding: 16px 20px;
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .meta-box p {
+      margin-bottom: 6px;
+    }
+
+    .meta-box p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-text {
+      font-size: 1.05rem;
+      color: #334155;
+      margin-bottom: 16px;
+    }
+
+    /* Sections styling */
+    section {
+      padding-top: 24px;
+      margin-bottom: 40px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .section-header h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+
+    p {
+      margin-bottom: 16px;
+      color: #374151;
+      font-size: 1rem;
+    }
+
+    ul {
+      list-style-type: disc;
+      padding-left: 24px;
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 14px;
+      color: #374151;
+      font-size: 0.98rem;
+    }
+
+    li strong {
+      color: #111827;
+    }
+
+    li:last-child {
+      margin-bottom: 0;
+    }
+
+    code {
+      background-color: var(--code-bg);
+      border: 1px solid #cbd5e1;
+      padding: 2px 7px;
+      border-radius: 5px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.88em;
+      color: #dc2626;
+      font-weight: 600;
+    }
+
+    /* Callout & Special Legal Boxes */
+    .callout-warning {
+      background-color: var(--warning-bg);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-left: 5px solid var(--warning-border);
+      padding: 18px 22px;
+      border-radius: 8px;
+      margin: 20px 0;
+      color: var(--warning-text);
+      font-size: 0.95rem;
+    }
+
+    .callout-warning strong {
+      display: block;
+      margin-bottom: 4px;
+      color: #78350f;
+      font-size: 1rem;
+    }
+
+    .caps-box {
+      background: #f8fafc;
+      border: 1px solid #cbd5e1;
+      border-left: 4px solid #64748b;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px 0;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      font-weight: 600;
+      color: #334155;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.15s;
+    }
+
+    a:hover {
+      color: var(--primary-hover);
+    }
+
+    .back-to-top-btn {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.2s ease;
+      z-index: 45;
+    }
+
+    .back-to-top-btn.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top-btn:hover {
+      background: #f1f5f9;
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    footer {
+      margin-top: 50px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      color: var(--text-light);
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .content-card {
+        padding: 28px 20px;
+        border-radius: 12px;
+      }
+
+      .doc-header h1 {
+        font-size: 1.65rem;
+      }
+
+      .section-header h2 {
+        font-size: 1.2rem;
+      }
+
+      .top-navbar {
+        padding: 12px 16px;
+      }
+
+      .floating-toc-btn {
+        bottom: 16px;
+        left: 16px;
+        padding: 10px 14px;
+      }
+
+      .back-to-top-btn {
+        bottom: 16px;
+        right: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Bar -->
+  <nav class="top-navbar">
+    <div class="brand-title">
+      <span>LambDev</span>
+      <span class="brand-badge">Legal</span>
+    </div>
+    <button class="toc-open-btn" id="openTocNavbar" aria-label="Open Table of Contents">
+      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h12"/></svg>
+      Table of Contents
+    </button>
+  </nav>
+
+  <!-- Floating Quick-Open Button (Appears as user scrolls) -->
+  <button class="floating-toc-btn" id="openTocFloating" aria-label="Open Table of Contents">
+    <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h12"/></svg>
+    Index
+  </button>
+
+  <!-- Backdrop Overlay -->
+  <div class="drawer-overlay" id="drawerOverlay"></div>
+
+  <!-- Off-Canvas Drawer (Hidden by default) -->
+  <aside class="drawer" id="tocDrawer" aria-label="Table of Contents">
+    <div class="drawer-header">
+      <h3>Table of Contents</h3>
+      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close Table of Contents">&times;</button>
+    </div>
+    <div class="drawer-nav">
+      <ul class="toc-list" id="tocNavList">
+        <li><a href="#section-1">1. Scope and Purpose</a></li>
+        <li><a href="#section-2">2. Virtual Currency ("Coins")</a></li>
+        <li><a href="#section-3">3. In-App Purchases &amp; PRO</a></li>
+        <li><a href="#section-4">4. AR Safety Disclaimer</a></li>
+        <li><a href="#section-5">5. Intellectual Property &amp; 3D</a></li>
+        <li><a href="#section-6">6. Disclaimer of Warranties</a></li>
+        <li><a href="#section-7">7. Limitation of Liability</a></li>
+        <li><a href="#section-7a">7A. Privacy and Permissions</a></li>
+        <li><a href="#section-8">8. Governing Law &amp; Disputes</a></li>
+        <li><a href="#section-9">9. Modifications &amp; Termination</a></li>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- Main Container -->
+  <div class="container">
+    <article class="content-card">
+      <header class="doc-header">
+        <h1>TERMS AND CONDITIONS OF USE</h1>
+        <div class="meta-box">
+          <p><strong>Last Updated:</strong> September 24, 2026</p>
+          <p><strong>Service Provider:</strong> LambDev, operated by Guillermo Antonio Cordero Martinez, an independent developer residing in Mexico</p>
+          <p><strong>Support Contact:</strong> <a href="mailto:lambsupport@flockred.com">lambsupport@flockred.com</a></p>
+        </div>
+        <p class="intro-text">
+          Welcome to the mobile application developed and operated by <strong>LambDev</strong> (hereinafter referred to as the "Application", "Service", "we", "us", or "our"). By downloading, accessing, installing, or using this Application, you (hereinafter referred to as the "User" or "you") agree to be legally bound by these Terms and Conditions of Use (the "Terms").
+        </p>
+        <p><strong>If you do not agree to all terms and conditions herein, do not download, install, or use this Application.</strong></p>
+      </header>
+
+      <!-- Section 1 -->
+      <section id="section-1">
+        <div class="section-header">
+          <h2>1. Scope and Purpose of the Service</h2>
+        </div>
+        <p>The Application provides mobile tools for rendering, viewing, and interacting with three-dimensional (3D) digital models, Augmented Reality (AR) visualization features, local device-level media capture and recording tools, as well as virtual reward systems and In-App Purchases ("IAP") distributed through third-party platforms.</p>
+        <p>You must be legally able to enter into these Terms under the laws applicable to you. If you are under the age of majority in your jurisdiction, you may use the Application only with the consent and supervision of a parent or legal guardian. The Application is not directed to children under the minimum age required by applicable law.</p>
+        <p>You must not use the Application to violate any law, infringe third-party rights, interfere with the Application or its advertising or payment systems, reverse engineer or modify the Application, automate rewards, or obtain coins or other benefits through fraud, abuse, or technical manipulation.</p>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="section-2">
+        <div class="section-header">
+          <h2>2. Virtual Currency ("Coins") and Reward System</h2>
+        </div>
+        <ul>
+          <li><strong>2.1. Nature of Virtual Coins:</strong> Virtual coins or tokens accumulated or earned through rewarded video ads or other in-app dynamics constitute digital, intangible game-play items licensed to you on a limited, revocable basis. <strong>Virtual coins have no real-world monetary value</strong>, do not generate interest, and do not constitute legal tender, stored-value, or property under applicable United States law.</li>
+          <li><strong>2.2. Non-Refundable and Non-Transferable:</strong> Virtual coins are not redeemable, exchangeable, or refundable for cash, real-world goods, or any other monetary instrument. You may not sell, barter, trade, assign, or transfer virtual currency between accounts, devices, or third parties. Any attempted transfer is null and void.</li>
+          <li><strong>2.3. Local Device Storage and Data Loss:</strong> The Application operates primarily via local device storage and does not maintain centralized cloud user accounts or external synchronization for virtual coin balances. <strong>If you uninstall the Application, clear app data/cache, or factory-reset your device, your accumulated virtual coin balance will be permanently and irreversibly lost.</strong> LambDev assumes no liability, obligation, or responsibility to restore, reimburse, or compensate for lost virtual items or currency.</li>
+          <li><strong>2.4. Third-Party Advertising Availability:</strong> Rewarded advertisements are delivered via third-party ad networks (such as Google AdMob). LambDev does not represent, warrant, or guarantee that advertisements or reward opportunities will be available continuously, without interruption, or across all geographic territories.</li>
+          <li><strong>2.5. Changes, Errors, and Misconduct:</strong> LambDev may correct erroneous balances, restrict access to rewards, or suspend or remove virtual coins obtained through fraud, abuse, or a technical error. Subject to applicable law, LambDev may change, suspend, or discontinue the virtual currency system. Virtual coins are not refundable unless a refund is required by law.</li>
+        </ul>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="section-3">
+        <div class="section-header">
+          <h2>3. In-App Purchases and PRO Upgrades</h2>
+        </div>
+        <ul>
+          <li><strong>3.1. Non-Consumable License (PRO Unlock):</strong> The product designated as <code>unlock_full_app</code> (Unlimited Access / PRO) constitutes a non-consumable, personal, non-exclusive, non-transferable license tied directly to your authorized Google Play account. This purchase unlocks specified features on a permanent basis and may be restored at any time on compatible devices registered under the same Google Play account using the in-app <strong>"Restore Purchases"</strong> feature.</li>
+          <li><strong>3.2. Consumable Support / Voluntary Tips:</strong> Items designated as consumable products (including, without limitation, <code>tip_coffee</code>, <code>support_developer</code>, <code>support_super</code>, or equivalent tiers) represent voluntary gratuities and donations supporting developer maintenance. These contributions do not grant extended functionality, technical benefits, or exclusive privileges beyond the acknowledgment displayed within the user interface.</li>
+          <li><strong>3.3. Billing and Refund Policy:</strong> All financial transactions are processed directly by Google LLC through the Google Play Store. Google Play's applicable purchase, cancellation, and refund policies apply to those transactions. Nothing in these Terms limits any mandatory refund, cancellation, warranty, or other consumer right that applies under the law in your country or region. LambDev does not process, store, or manage user credit card details or financial transactions directly.</li>
+          <li><strong>3.4. Purchase Availability and Restoration:</strong> The availability, price, taxes, billing terms, and restoration of an in-app purchase may depend on Google Play, your Google Play account, your device, and the version of the Application. A purchase may be restored only where Google Play recognizes the same eligible account and product. Consumable purchases generally cannot be restored after they have been granted or consumed.</li>
+        </ul>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="section-4">
+        <div class="section-header">
+          <h2>4. Augmented Reality (AR) Safety Disclaimer &amp; Warning</h2>
+        </div>
+        <div class="callout-warning">
+          <strong>CRITICAL SAFETY WARNING:</strong>
+          AR features project digital content over your real-world surroundings. Always remain aware of your environment to prevent physical injury, collisions, or property damage.
+        </div>
+        <ul>
+          <li><strong>4.1. Physical Environment Awareness:</strong> <strong>ALWAYS REMAIN AWARE OF YOUR SURROUNDINGS WHILE USING AUGMENTED REALITY (AR) FEATURES.</strong> AR features project digital content over your physical surroundings through your device camera. You acknowledge and agree that it is your sole responsibility to remain conscious of your physical environment at all times to prevent trips, falls, collisions with objects, hazards, pedestrians, or motor vehicles.</li>
+          <li><strong>4.2. Safe Usage Locations:</strong> Do NOT use AR features while driving, biking, operating machinery, walking in traffic, navigating stairways, near drop-offs or balconies, or in any environment requiring full, unobstructed attention.</li>
+          <li><strong>4.3. Supervision of Minors:</strong> Children and minors under the age of 18 (or the age of majority in their jurisdiction) may only use AR features under the active, direct supervision of a parent or legal guardian who agrees to be bound by these Terms.</li>
+          <li><strong>4.4. Assumption of Risk:</strong> TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, YOU KNOWINGLY AND FREELY ASSUME ALL RISKS, KNOWN AND UNKNOWN, ASSOCIATED WITH YOUR USE OF AR FEATURES. LAMBDEV DISCLAIMS ALL LIABILITY FOR ANY PERSONAL INJURY, PROPERTY DAMAGE, WRONGFUL DEATH, OR ACCIDENT RESULTING FROM YOUR USE OR MISUSE OF THE AR SYSTEM.</li>
+        </ul>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="section-5">
+        <div class="section-header">
+          <h2>5. Intellectual Property, 3D Assets, and Exported Media</h2>
+        </div>
+        <ul>
+          <li><strong>5.1. User Ownership of 3D Models:</strong> You retain all existing copyright, ownership, and intellectual property rights in and to any 3D models, files, and assets you import, upload, or render within the Application. LambDev asserts no ownership, copyright, or proprietary claim over your imported assets.</li>
+          <li><strong>5.2. Representation and Warranty of Non-Infringement:</strong> You represent and warrant that you hold all necessary licenses, patents, trademarks, copyrights, or legal permissions required to import, display, and process your chosen 3D assets within the Application. You agree not to upload or visualize any content that infringes or misappropriates any third-party intellectual property or privacy rights.</li>
+          <li><strong>5.3. Exported Recordings and Screenshots:</strong> Screenshots, images, and video recordings (including MP4 files) produced through the Application are generated and saved locally on your hardware. You bear exclusive responsibility for any downstream publication, sharing, distribution, or commercial exploitation of recorded materials and must ensure such media does not violate third-party rights.</li>
+          <li><strong>5.4. Indemnification:</strong> You agree to defend, indemnify, and hold harmless LambDev, its officers, employees, and affiliates from and against any third-party claims, liabilities, damages, judgments, or expenses (including reasonable attorneys' fees) arising out of or related to your breach of intellectual property rights or imported files.</li>
+          <li><strong>5.5. Limited License to Operate the Service:</strong> You grant LambDev only the limited rights reasonably necessary to receive, process, display, and store files or media when the Application's documented features require those actions. This license is non-exclusive, worldwide, royalty-free, and ends when the relevant content is deleted or when you stop using the applicable feature. If the Application processes content only on your device, LambDev does not receive that content.</li>
+        </ul>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="section-6">
+        <div class="section-header">
+          <h2>6. Disclaimer of Warranties</h2>
+        </div>
+        <div class="caps-box">
+          TO THE MAXIMUM EXTENT PERMITTED UNDER APPLICABLE LAW:
+          <br><br>
+          THE APPLICATION IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
+          <br><br>
+          LAMBDEV DOES NOT WARRANT THAT THE OPERATION OF THE APPLICATION WILL BE UNINTERRUPTED, SECURE, BUG-FREE, ACCURATE, OR COMPATIBLE WITH ALL HARDWARE SPECIFICATIONS. 3D RENDERING FRAME-RATES (FPS), THERMAL PERFORMANCE, AND VIDEO ENCODING DEPEND ON YOUR HARDWARE (GPU, CPU, MEMORY ARCHITECTURE) AND COMPLEXITY (POLYGON COUNT) OF THE LOADED ASSETS.
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section id="section-7">
+        <div class="section-header">
+          <h2>7. Limitation of Liability</h2>
+        </div>
+        <div class="caps-box">
+          TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL LAMBDEV, ITS DEVELOPERS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES (INCLUDING LOSS OF DATA, PROFITS, REVENUE, GOODWILL, OR HARDWARE FAILURE), ARISING OUT OF OR IN CONNECTION WITH YOUR USE OR INABILITY TO USE THE APPLICATION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+          <br><br>
+          LAMBDEV'S TOTAL AGGREGATE LIABILITY ARISING FROM OR RELATING TO THESE TERMS OR THE SERVICE SHALL NOT EXCEED THE AMOUNT ACTUALLY PAID BY YOU TO LAMBDEV FOR THE SPECIFIC IN-APP PURCHASE GIVING RISE TO THE CLAIM, OR FIFTY U.S. DOLLARS ($50.00 USD), WHICHEVER IS GREATER.
+        </div>
+        <p>Nothing in these Terms excludes or limits liability that cannot lawfully be excluded or limited, including liability for fraud, intentional misconduct, or rights that cannot be waived under applicable consumer-protection law.</p>
+      </section>
+
+      <!-- Section 7A -->
+      <section id="section-7a">
+        <div class="section-header">
+          <h2>7A. Privacy and Permissions</h2>
+        </div>
+        <p>The Application's collection and use of personal information, device permissions, camera or media access, advertising technologies, and purchase-related information are described in LambDev's <a href="https://privacypolicyandterms.flockred.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>. The Privacy Policy should be made available through the Application and the relevant app store listing. You are responsible for reviewing it before using features that require device permissions.</p>
+      </section>
+
+      <!-- Section 8 -->
+      <section id="section-8">
+        <div class="section-header">
+          <h2>8. Governing Law and Dispute Resolution</h2>
+        </div>
+        <ul>
+          <li><strong>8.1. Governing Law:</strong> These Terms and any dispute arising out of or related to the Application shall be governed by the laws of <strong>Mexico</strong>, without regard to its conflict-of-law principles. Any dispute shall be submitted to the competent courts located in the Mexican state where the Service Provider has their principal domicile, unless applicable law requires otherwise. Nothing in these Terms limits mandatory consumer-protection, privacy, refund, or other legal rights available to Users under the laws of their country or region.</li>
+          <li><strong>8.2. Informal Dispute Resolution:</strong> Before initiating formal legal action, you agree to contact us at <a href="mailto:guillermoantoniocor@gmail.com">guillermoantoniocor@gmail.com</a> and make a good-faith effort to resolve the dispute informally for at least thirty (30) days.</li>
+          <li><strong>8.3. Class Action Waiver:</strong> WHERE PERMITTED UNDER APPLICABLE LAW, YOU AND LAMBDEV AGREE THAT EACH MAY BRING CLAIMS AGAINST THE OTHER ONLY IN AN INDIVIDUAL CAPACITY AND NOT AS A PLAINTIFF OR CLASS MEMBER IN ANY PURPORTED CLASS OR REPRESENTATIVE PROCEEDING.</li>
+          <li><strong>8.4. Contact Before a Formal Claim:</strong> Any notice relating to a dispute must be sent to <a href="mailto:guillermoantoniocor@gmail.com">guillermoantoniocor@gmail.com</a> and must describe the issue, the requested resolution, and the transaction or feature involved. This informal process does not prevent you from exercising a statutory right to contact a regulator, file a qualifying claim, or seek urgent legal relief.</li>
+        </ul>
+      </section>
+
+      <!-- Section 9 -->
+      <section id="section-9">
+        <div class="section-header">
+          <h2>9. Modifications and Severability</h2>
+        </div>
+        <ul>
+          <li><strong>9.1. Modifications:</strong> We reserve the right to revise or modify these Terms at our discretion. The updated date will reflect the most current revision. Continued use of the Application after revised Terms take effect constitutes your binding agreement to the amended Terms.</li>
+          <li><strong>9.2. Severability:</strong> If any provision of these Terms is found to be unlawful, void, or unenforceable, that provision shall be deemed severable and shall not affect the validity and enforceability of any remaining provisions. The Application's collection and use of personal information are described in LambDev's <a href="https://privacypolicyandterms.flockred.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</li>
+          <li><strong>9.3. Suspension and Termination:</strong> LambDev may suspend or terminate access to the Application or particular features when reasonably necessary to address fraud, abuse, security risks, legal requirements, or a material breach of these Terms. We may also discontinue the Application or a feature. Where required by law, we will provide any applicable notice, refund, or other remedy. Termination does not remove rights or obligations that by their nature should continue, including intellectual-property, limitation-of-liability, dispute-resolution, and indemnification provisions.</li>
+        </ul>
+      </section>
+
+      <footer>
+        <p>&copy; 2026 LambDev. All rights reserved. | <a href="https://privacypolicyandterms.flockred.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></p>
+      </footer>
+    </article>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to Top">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const drawer = document.getElementById('tocDrawer');
+      const overlay = document.getElementById('drawerOverlay');
+      const openBtnNavbar = document.getElementById('openTocNavbar');
+      const openBtnFloating = document.getElementById('openTocFloating');
+      const closeBtn = document.getElementById('closeDrawerBtn');
+      const backToTopBtn = document.getElementById('backToTopBtn');
+      const tocLinks = document.querySelectorAll('#tocNavList a');
+      const sections = document.querySelectorAll('section');
+
+      // Function to open drawer
+      function openDrawer() {
+        drawer.classList.add('active');
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Function to close drawer
+      function closeDrawer() {
+        drawer.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      // Event listeners for open/close
+      if (openBtnNavbar) openBtnNavbar.addEventListener('click', openDrawer);
+      if (openBtnFloating) openBtnFloating.addEventListener('click', openDrawer);
+      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+      if (overlay) overlay.addEventListener('click', closeDrawer);
+
+      // Close drawer with Escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && drawer.classList.contains('active')) {
+          closeDrawer();
+        }
+      });
+
+      // Smooth navigation and automatic drawer closing on link click
+      tocLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          closeDrawer();
+        });
+      });
+
+      // Scroll Spy to highlight active section in TOC and show Back-to-Top
+      window.addEventListener('scroll', () => {
+        const scrollPosition = window.scrollY;
+
+        // Toggle Back-To-Top button visibility
+        if (scrollPosition > 350) {
+          backToTopBtn.classList.add('visible');
+        } else {
+          backToTopBtn.classList.remove('visible');
+        }
+
+        // Active link tracking
+        let currentSectionId = '';
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop - 120;
+          const sectionHeight = section.offsetHeight;
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSectionId = section.getAttribute('id');
+          }
+        });
+
+        tocLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${currentSectionId}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+
+      // Back to Top Click
+      backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
