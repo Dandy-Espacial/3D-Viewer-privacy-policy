@@ -4,29 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Terms and Conditions of Use | LambDev</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #2563eb;
-      --primary-hover: #1d4ed8;
-      --primary-light: #eff6ff;
-      --text-main: #1f2937;
-      --text-muted: #4b5563;
-      --text-light: #6b7280;
-      --bg-page: #f8fafc;
+      --primary: #1d4ed8;
+      --primary-hover: #1e40af;
+      --primary-bg: #eff6ff;
+      --text-main: #0f172a;
+      --text-muted: #334155;
+      --text-light: #64748b;
+      --bg-page: #f1f5f9;
       --bg-card: #ffffff;
-      --border-color: #e2e8f0;
-      --badge-bg: #e0e7ff;
-      --badge-text: #3730a3;
-      --warning-bg: #fffbeb;
+      --border-color: #cbd5e1;
+      --warning-bg: #fef3c7;
       --warning-border: #f59e0b;
-      --warning-text: #92400e;
-      --code-bg: #f1f5f9;
-      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-      --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
-      --shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      --warning-text: #78350f;
+      --code-bg: #f8fafc;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
+      --shadow-md: 0 4px 14px rgba(0,0,0,0.12);
+      --shadow-lg: 0 12px 28px rgba(0,0,0,0.22);
     }
 
     * {
@@ -37,313 +32,352 @@
 
     html {
       scroll-behavior: smooth;
-      scroll-padding-top: 80px;
+      scroll-padding-top: 90px;
     }
 
     body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background-color: var(--bg-page);
       color: var(--text-main);
-      line-height: 1.7;
-      padding: 0 0 60px;
+      line-height: 1.75;
+      padding-bottom: 80px;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* Top Sticky Minimalist Navbar */
+    /* Top Sticky Navigation Bar */
     .top-navbar {
+      position: -webkit-sticky;
       position: sticky;
       top: 0;
-      z-index: 40;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border-color);
+      left: 0;
+      right: 0;
+      width: 100%;
+      z-index: 1000;
+      background: #ffffff;
+      border-bottom: 2px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 24px;
+      padding: 12px 24px;
       box-shadow: var(--shadow-sm);
     }
 
-    .brand-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #0f172a;
+    .brand-wrap {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+    }
+
+    .brand-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: -0.01em;
     }
 
     .brand-badge {
       font-size: 0.72rem;
-      font-weight: 600;
-      background: var(--badge-bg);
-      color: var(--badge-text);
-      padding: 2px 8px;
+      font-weight: 700;
+      background: #dbeafe;
+      color: #1e40af;
+      padding: 3px 9px;
       border-radius: 9999px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
 
-    /* Floating / Top Bar TOC Trigger Button */
-    .toc-open-btn {
+    /* High Visibility TOC Trigger in Navbar */
+    .toc-trigger-btn {
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 8px;
-      background: var(--primary);
+      background-color: #1d4ed8;
       color: #ffffff;
-      border: none;
-      padding: 8px 16px;
+      border: 1px solid #1e40af;
+      padding: 9px 18px;
       border-radius: 9999px;
-      font-size: 0.88rem;
-      font-weight: 600;
+      font-size: 0.92rem;
+      font-weight: 700;
       cursor: pointer;
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 2px 6px rgba(29, 78, 216, 0.35);
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
 
-    .toc-open-btn:hover {
-      background: var(--primary-hover);
+    .toc-trigger-btn:hover {
+      background-color: var(--primary-hover);
       transform: translateY(-1px);
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 4px 12px rgba(29, 78, 216, 0.45);
     }
 
-    .toc-open-btn svg {
-      width: 18px;
-      height: 18px;
+    .toc-trigger-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: #ffffff;
+      stroke-width: 2.3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
       fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
+      display: block;
+      flex-shrink: 0;
     }
 
-    /* Floating button for quick access on scroll */
-    .floating-toc-btn {
+    /* Fixed Floating Action Button (FAB) for TOC */
+    .floating-fab {
       position: fixed;
       bottom: 24px;
       left: 24px;
-      z-index: 45;
+      z-index: 99999;
       background: #0f172a;
       color: #ffffff;
-      border: none;
-      padding: 12px 18px;
+      border: 2px solid #334155;
+      padding: 12px 20px;
       border-radius: 9999px;
-      font-size: 0.88rem;
-      font-weight: 600;
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
       box-shadow: var(--shadow-lg);
       display: flex;
       align-items: center;
-      gap: 8px;
-      transition: transform 0.2s ease, background 0.2s ease;
+      gap: 10px;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .floating-toc-btn:hover {
+    .floating-fab:hover {
       background: #1e293b;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.35);
     }
 
-    .floating-toc-btn svg {
-      width: 20px;
-      height: 20px;
+    .floating-fab svg {
+      width: 22px;
+      height: 22px;
+      stroke: #38bdf8;
+      stroke-width: 2.4;
+      stroke-linecap: round;
+      stroke-linejoin: round;
       fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
+      display: block;
+      flex-shrink: 0;
     }
 
-    /* Drawer Backdrop */
-    .drawer-overlay {
+    /* Backdrop Overlay */
+    .drawer-backdrop {
       position: fixed;
       top: 0;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(15, 23, 42, 0.45);
-      backdrop-filter: blur(2px);
-      z-index: 50;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(3px);
+      z-index: 100000;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
+      transition: opacity 0.25s ease, visibility 0.25s ease;
     }
 
-    .drawer-overlay.active {
+    .drawer-backdrop.active {
       opacity: 1;
       visibility: visible;
     }
 
-    /* Off-Canvas Sliding Drawer */
-    .drawer {
+    /* Sliding Drawer */
+    .toc-drawer {
       position: fixed;
       top: 0;
       left: 0;
-      width: 340px;
-      max-width: 85vw;
-      height: 100%;
-      background: var(--bg-card);
-      z-index: 60;
-      box-shadow: var(--shadow-lg);
+      width: 360px;
+      max-width: 88vw;
+      height: 100vh;
+      background: #ffffff;
+      z-index: 100001;
+      box-shadow: 6px 0 24px rgba(0,0,0,0.25);
       display: flex;
       flex-direction: column;
       transform: translateX(-100%);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .drawer.active {
+    .toc-drawer.active {
       transform: translateX(0);
     }
 
     .drawer-header {
-      padding: 20px 24px;
-      border-bottom: 1px solid var(--border-color);
+      padding: 18px 22px;
+      border-bottom: 2px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #fafafa;
+      background: #f8fafc;
     }
 
     .drawer-header h3 {
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-size: 1.1rem;
+      font-weight: 800;
       color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
 
-    .drawer-close-btn {
-      background: transparent;
+    .close-btn {
+      background: #e2e8f0;
       border: none;
-      font-size: 1.4rem;
-      line-height: 1;
-      color: var(--text-light);
+      color: #0f172a;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
       cursor: pointer;
-      width: 32px;
-      height: 32px;
-      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: background 0.15s;
+      transition: background 0.15s, transform 0.15s;
     }
 
-    .drawer-close-btn:hover {
-      background: #f1f5f9;
-      color: #0f172a;
+    .close-btn:hover {
+      background: #cbd5e1;
+      transform: scale(1.05);
     }
 
-    .drawer-nav {
+    .close-btn svg {
+      width: 20px;
+      height: 20px;
+      stroke: #0f172a;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      display: block;
+    }
+
+    .drawer-content {
       padding: 16px;
       overflow-y: auto;
       flex: 1;
+      -webkit-overflow-scrolling: touch;
     }
 
-    .toc-list {
+    .drawer-nav-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
     }
 
-    .toc-list a {
-      color: var(--text-main);
+    .drawer-nav-list a {
+      color: #1e293b;
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 500;
-      padding: 10px 14px;
+      font-size: 0.93rem;
+      font-weight: 600;
+      padding: 11px 14px;
       border-radius: 8px;
       display: block;
-      transition: background 0.15s, color 0.15s, transform 0.15s;
-      border-left: 3px solid transparent;
+      border-left: 4px solid transparent;
+      background: #f8fafc;
+      transition: all 0.15s ease;
     }
 
-    .toc-list a:hover {
-      background: var(--primary-light);
+    .drawer-nav-list a:hover {
+      background: var(--primary-bg);
       color: var(--primary);
+      border-left-color: var(--primary);
       transform: translateX(4px);
     }
 
-    .toc-list a.active {
-      background: var(--primary-light);
+    .drawer-nav-list a.active-link {
+      background: var(--primary-bg);
       color: var(--primary);
-      font-weight: 600;
-      border-left: 3px solid var(--primary);
+      border-left-color: var(--primary);
+      font-weight: 700;
     }
 
-    /* Main Container & Card Layout */
+    /* Main Container & Typography */
     .container {
       max-width: 860px;
-      margin: 40px auto 0;
+      margin: 32px auto 0;
       padding: 0 20px;
     }
 
-    .content-card {
+    .article-card {
       background: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 16px;
-      padding: 48px;
+      padding: 44px;
       box-shadow: var(--shadow-sm);
     }
 
-    /* Header styling */
-    .doc-header {
-      margin-bottom: 36px;
-      padding-bottom: 28px;
+    .article-header {
+      margin-bottom: 32px;
+      padding-bottom: 24px;
       border-bottom: 2px solid var(--border-color);
     }
 
-    .doc-header h1 {
+    .article-header h1 {
       font-size: 2.1rem;
-      font-weight: 800;
+      font-weight: 900;
       color: #0f172a;
       line-height: 1.25;
+      margin-bottom: 18px;
       letter-spacing: -0.02em;
-      margin-bottom: 16px;
     }
 
-    .meta-box {
+    .meta-card {
       background: #f8fafc;
-      border: 1px solid var(--border-color);
-      border-left: 4px solid var(--primary);
+      border: 1px solid #cbd5e1;
+      border-left: 5px solid var(--primary);
       border-radius: 8px;
       padding: 16px 20px;
-      font-size: 0.92rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       margin-bottom: 24px;
     }
 
-    .meta-box p {
+    .meta-card p {
       margin-bottom: 6px;
     }
 
-    .meta-box p:last-child {
+    .meta-card p:last-child {
       margin-bottom: 0;
     }
 
-    .intro-text {
+    .lead-text {
       font-size: 1.05rem;
-      color: #334155;
-      margin-bottom: 16px;
+      color: #1e293b;
+      margin-bottom: 14px;
     }
 
-    /* Sections styling */
+    .bold-notice {
+      font-weight: 700;
+      color: #b91c1c;
+      margin-bottom: 20px;
+    }
+
+    /* Content Sections */
     section {
-      padding-top: 24px;
-      margin-bottom: 40px;
+      padding-top: 30px;
+      margin-bottom: 36px;
+      border-top: 1px solid #e2e8f0;
     }
 
-    .section-header {
+    section:first-of-type {
+      border-top: none;
+      padding-top: 10px;
+    }
+
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .section-header h2 {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: #0f172a;
+      gap: 10px;
     }
 
     p {
       margin-bottom: 16px;
-      color: #374151;
+      color: #334155;
       font-size: 1rem;
     }
 
@@ -355,58 +389,66 @@
 
     li {
       margin-bottom: 14px;
-      color: #374151;
+      color: #334155;
       font-size: 0.98rem;
     }
 
     li strong {
-      color: #111827;
-    }
-
-    li:last-child {
-      margin-bottom: 0;
+      color: #0f172a;
     }
 
     code {
       background-color: var(--code-bg);
       border: 1px solid #cbd5e1;
       padding: 2px 7px;
-      border-radius: 5px;
+      border-radius: 6px;
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
       font-size: 0.88em;
       color: #dc2626;
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    /* Callout & Special Legal Boxes */
-    .callout-warning {
+    /* Warning & Caps Callout Boxes */
+    .warning-box {
       background-color: var(--warning-bg);
-      border: 1px solid rgba(245, 158, 11, 0.3);
-      border-left: 5px solid var(--warning-border);
-      padding: 18px 22px;
-      border-radius: 8px;
-      margin: 20px 0;
+      border: 2px solid var(--warning-border);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 24px 0;
       color: var(--warning-text);
-      font-size: 0.95rem;
     }
 
-    .callout-warning strong {
-      display: block;
-      margin-bottom: 4px;
+    .warning-box h4 {
+      font-size: 1.05rem;
+      font-weight: 800;
       color: #78350f;
-      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
     }
 
-    .caps-box {
+    .warning-box svg {
+      width: 22px;
+      height: 22px;
+      stroke: #b45309;
+      stroke-width: 2.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+      flex-shrink: 0;
+    }
+
+    .legal-caps-box {
       background: #f8fafc;
       border: 1px solid #cbd5e1;
-      border-left: 4px solid #64748b;
+      border-left: 5px solid #475569;
       border-radius: 8px;
       padding: 20px;
-      margin: 20px 0;
+      margin: 24px 0;
       font-size: 0.88rem;
-      line-height: 1.6;
-      font-weight: 600;
+      line-height: 1.65;
+      font-weight: 700;
       color: #334155;
     }
 
@@ -414,6 +456,7 @@
       color: var(--primary);
       text-decoration: underline;
       text-underline-offset: 3px;
+      font-weight: 600;
       transition: color 0.15s;
     }
 
@@ -421,16 +464,17 @@
       color: var(--primary-hover);
     }
 
-    .back-to-top-btn {
+    /* Back To Top Button */
+    .back-to-top {
       position: fixed;
       bottom: 24px;
       right: 24px;
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       background: #ffffff;
-      color: var(--text-main);
-      border: 1px solid var(--border-color);
+      color: #0f172a;
+      border: 2px solid var(--border-color);
       box-shadow: var(--shadow-md);
       display: flex;
       align-items: center;
@@ -439,126 +483,157 @@
       opacity: 0;
       visibility: hidden;
       transition: all 0.2s ease;
-      z-index: 45;
+      z-index: 99998;
     }
 
-    .back-to-top-btn.visible {
+    .back-to-top.visible {
       opacity: 1;
       visibility: visible;
     }
 
-    .back-to-top-btn:hover {
+    .back-to-top:hover {
       background: #f1f5f9;
       transform: translateY(-3px);
       box-shadow: var(--shadow-lg);
     }
 
+    .back-to-top svg {
+      width: 22px;
+      height: 22px;
+      stroke: #0f172a;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill: none;
+    }
+
     footer {
-      margin-top: 50px;
+      margin-top: 48px;
       padding-top: 24px;
-      border-top: 1px solid var(--border-color);
-      font-size: 0.88rem;
+      border-top: 2px solid var(--border-color);
+      font-size: 0.9rem;
       color: var(--text-light);
       text-align: center;
     }
 
-    @media (max-width: 640px) {
-      .content-card {
-        padding: 28px 20px;
+    @media (max-width: 768px) {
+      .article-card {
+        padding: 28px 18px;
         border-radius: 12px;
       }
 
-      .doc-header h1 {
+      .article-header h1 {
         font-size: 1.65rem;
       }
 
-      .section-header h2 {
-        font-size: 1.2rem;
-      }
-
       .top-navbar {
-        padding: 12px 16px;
-      }
-
-      .floating-toc-btn {
-        bottom: 16px;
-        left: 16px;
         padding: 10px 14px;
       }
 
-      .back-to-top-btn {
+      .floating-fab {
+        bottom: 16px;
+        left: 16px;
+        padding: 10px 16px;
+        font-size: 0.88rem;
+      }
+
+      .back-to-top {
         bottom: 16px;
         right: 16px;
+        width: 42px;
+        height: 42px;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Sticky Bar -->
-  <nav class="top-navbar">
-    <div class="brand-title">
-      <span>LambDev</span>
+  <!-- Top Sticky Navigation Bar -->
+  <header class="top-navbar">
+    <div class="brand-wrap">
+      <span class="brand-name">LambDev</span>
       <span class="brand-badge">Legal</span>
     </div>
-    <button class="toc-open-btn" id="openTocNavbar" aria-label="Open Table of Contents">
-      <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h12"/></svg>
-      Table of Contents
+    
+    <!-- Navbar TOC Button with explicit inline SVG -->
+    <button class="toc-trigger-btn" id="openDrawerNavbarBtn" aria-label="Open Table of Contents">
+      <svg viewBox="0 0 24 24">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="15" y2="18"></line>
+      </svg>
+      <span>Table of Contents</span>
     </button>
-  </nav>
+  </header>
 
-  <!-- Floating Quick-Open Button (Appears as user scrolls) -->
-  <button class="floating-toc-btn" id="openTocFloating" aria-label="Open Table of Contents">
-    <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h12"/></svg>
-    Index
+  <!-- Always Visible Floating Action Button (FAB) -->
+  <button class="floating-fab" id="openDrawerFloatingBtn" aria-label="Open Table of Contents Index">
+    <svg viewBox="0 0 24 24">
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+    <span>Menu / Index</span>
   </button>
 
-  <!-- Backdrop Overlay -->
-  <div class="drawer-overlay" id="drawerOverlay"></div>
+  <!-- Dark Backdrop Overlay -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
 
-  <!-- Off-Canvas Drawer (Hidden by default) -->
-  <aside class="drawer" id="tocDrawer" aria-label="Table of Contents">
+  <!-- Off-Canvas Sliding Drawer -->
+  <aside class="toc-drawer" id="tocDrawer" aria-label="Navigation Drawer">
     <div class="drawer-header">
-      <h3>Table of Contents</h3>
-      <button class="drawer-close-btn" id="closeDrawerBtn" aria-label="Close Table of Contents">&times;</button>
+      <h3>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1d4ed8" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h12"></path>
+        </svg>
+        Table of Contents
+      </h3>
+      <button class="close-btn" id="closeDrawerBtn" aria-label="Close menu">
+        <svg viewBox="0 0 24 24">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
     </div>
-    <div class="drawer-nav">
-      <ul class="toc-list" id="tocNavList">
-        <li><a href="#section-1">1. Scope and Purpose</a></li>
-        <li><a href="#section-2">2. Virtual Currency ("Coins")</a></li>
-        <li><a href="#section-3">3. In-App Purchases &amp; PRO</a></li>
-        <li><a href="#section-4">4. AR Safety Disclaimer</a></li>
-        <li><a href="#section-5">5. Intellectual Property &amp; 3D</a></li>
-        <li><a href="#section-6">6. Disclaimer of Warranties</a></li>
-        <li><a href="#section-7">7. Limitation of Liability</a></li>
-        <li><a href="#section-7a">7A. Privacy and Permissions</a></li>
-        <li><a href="#section-8">8. Governing Law &amp; Disputes</a></li>
-        <li><a href="#section-9">9. Modifications &amp; Termination</a></li>
-      </ul>
+    <div class="drawer-content">
+      <nav>
+        <ul class="drawer-nav-list" id="drawerNavList">
+          <li><a href="#section-1">1. Scope and Purpose</a></li>
+          <li><a href="#section-2">2. Virtual Currency ("Coins")</a></li>
+          <li><a href="#section-3">3. In-App Purchases &amp; PRO</a></li>
+          <li><a href="#section-4">4. AR Safety Disclaimer &amp; Warning</a></li>
+          <li><a href="#section-5">5. Intellectual Property &amp; 3D Assets</a></li>
+          <li><a href="#section-6">6. Disclaimer of Warranties</a></li>
+          <li><a href="#section-7">7. Limitation of Liability</a></li>
+          <li><a href="#section-7a">7A. Privacy and Permissions</a></li>
+          <li><a href="#section-8">8. Governing Law &amp; Disputes</a></li>
+          <li><a href="#section-9">9. Modifications &amp; Severability</a></li>
+        </ul>
+      </nav>
     </div>
   </aside>
 
-  <!-- Main Container -->
-  <div class="container">
-    <article class="content-card">
-      <header class="doc-header">
+  <!-- Main Document Container -->
+  <main class="container">
+    <article class="article-card">
+      <header class="article-header">
         <h1>TERMS AND CONDITIONS OF USE</h1>
-        <div class="meta-box">
+        <div class="meta-card">
           <p><strong>Last Updated:</strong> September 24, 2026</p>
           <p><strong>Service Provider:</strong> LambDev, operated by Guillermo Antonio Cordero Martinez, an independent developer residing in Mexico</p>
           <p><strong>Support Contact:</strong> <a href="mailto:lambsupport@flockred.com">lambsupport@flockred.com</a></p>
         </div>
-        <p class="intro-text">
+        <p class="lead-text">
           Welcome to the mobile application developed and operated by <strong>LambDev</strong> (hereinafter referred to as the "Application", "Service", "we", "us", or "our"). By downloading, accessing, installing, or using this Application, you (hereinafter referred to as the "User" or "you") agree to be legally bound by these Terms and Conditions of Use (the "Terms").
         </p>
-        <p><strong>If you do not agree to all terms and conditions herein, do not download, install, or use this Application.</strong></p>
+        <p class="bold-notice">
+          If you do not agree to all terms and conditions herein, do not download, install, or use this Application.
+        </p>
       </header>
 
       <!-- Section 1 -->
       <section id="section-1">
-        <div class="section-header">
-          <h2>1. Scope and Purpose of the Service</h2>
-        </div>
+        <h2 class="section-title">1. Scope and Purpose of the Service</h2>
         <p>The Application provides mobile tools for rendering, viewing, and interacting with three-dimensional (3D) digital models, Augmented Reality (AR) visualization features, local device-level media capture and recording tools, as well as virtual reward systems and In-App Purchases ("IAP") distributed through third-party platforms.</p>
         <p>You must be legally able to enter into these Terms under the laws applicable to you. If you are under the age of majority in your jurisdiction, you may use the Application only with the consent and supervision of a parent or legal guardian. The Application is not directed to children under the minimum age required by applicable law.</p>
         <p>You must not use the Application to violate any law, infringe third-party rights, interfere with the Application or its advertising or payment systems, reverse engineer or modify the Application, automate rewards, or obtain coins or other benefits through fraud, abuse, or technical manipulation.</p>
@@ -566,9 +641,7 @@
 
       <!-- Section 2 -->
       <section id="section-2">
-        <div class="section-header">
-          <h2>2. Virtual Currency ("Coins") and Reward System</h2>
-        </div>
+        <h2 class="section-title">2. Virtual Currency ("Coins") and Reward System</h2>
         <ul>
           <li><strong>2.1. Nature of Virtual Coins:</strong> Virtual coins or tokens accumulated or earned through rewarded video ads or other in-app dynamics constitute digital, intangible game-play items licensed to you on a limited, revocable basis. <strong>Virtual coins have no real-world monetary value</strong>, do not generate interest, and do not constitute legal tender, stored-value, or property under applicable United States law.</li>
           <li><strong>2.2. Non-Refundable and Non-Transferable:</strong> Virtual coins are not redeemable, exchangeable, or refundable for cash, real-world goods, or any other monetary instrument. You may not sell, barter, trade, assign, or transfer virtual currency between accounts, devices, or third parties. Any attempted transfer is null and void.</li>
@@ -580,9 +653,7 @@
 
       <!-- Section 3 -->
       <section id="section-3">
-        <div class="section-header">
-          <h2>3. In-App Purchases and PRO Upgrades</h2>
-        </div>
+        <h2 class="section-title">3. In-App Purchases and PRO Upgrades</h2>
         <ul>
           <li><strong>3.1. Non-Consumable License (PRO Unlock):</strong> The product designated as <code>unlock_full_app</code> (Unlimited Access / PRO) constitutes a non-consumable, personal, non-exclusive, non-transferable license tied directly to your authorized Google Play account. This purchase unlocks specified features on a permanent basis and may be restored at any time on compatible devices registered under the same Google Play account using the in-app <strong>"Restore Purchases"</strong> feature.</li>
           <li><strong>3.2. Consumable Support / Voluntary Tips:</strong> Items designated as consumable products (including, without limitation, <code>tip_coffee</code>, <code>support_developer</code>, <code>support_super</code>, or equivalent tiers) represent voluntary gratuities and donations supporting developer maintenance. These contributions do not grant extended functionality, technical benefits, or exclusive privileges beyond the acknowledgment displayed within the user interface.</li>
@@ -593,12 +664,19 @@
 
       <!-- Section 4 -->
       <section id="section-4">
-        <div class="section-header">
-          <h2>4. Augmented Reality (AR) Safety Disclaimer &amp; Warning</h2>
-        </div>
-        <div class="callout-warning">
-          <strong>CRITICAL SAFETY WARNING:</strong>
-          AR features project digital content over your real-world surroundings. Always remain aware of your environment to prevent physical injury, collisions, or property damage.
+        <h2 class="section-title">4. Augmented Reality (AR) Safety Disclaimer &amp; Warning</h2>
+        <div class="warning-box">
+          <h4>
+            <svg viewBox="0 0 24 24">
+              <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path>
+              <line x1="12" y1="9" x2="12" y2="13"></line>
+              <line x1="12" y1="17" x2="12.01" y2="17"></line>
+            </svg>
+            CRITICAL SAFETY WARNING: AVOID PHYSICAL HAZARDS
+          </h4>
+          <p style="margin-bottom: 0; color: #78350f;">
+            AR features project digital content over your real-world surroundings. Always remain aware of your environment to prevent physical injury, trips, falls, collisions, or property damage.
+          </p>
         </div>
         <ul>
           <li><strong>4.1. Physical Environment Awareness:</strong> <strong>ALWAYS REMAIN AWARE OF YOUR SURROUNDINGS WHILE USING AUGMENTED REALITY (AR) FEATURES.</strong> AR features project digital content over your physical surroundings through your device camera. You acknowledge and agree that it is your sole responsibility to remain conscious of your physical environment at all times to prevent trips, falls, collisions with objects, hazards, pedestrians, or motor vehicles.</li>
@@ -610,9 +688,7 @@
 
       <!-- Section 5 -->
       <section id="section-5">
-        <div class="section-header">
-          <h2>5. Intellectual Property, 3D Assets, and Exported Media</h2>
-        </div>
+        <h2 class="section-title">5. Intellectual Property, 3D Assets, and Exported Media</h2>
         <ul>
           <li><strong>5.1. User Ownership of 3D Models:</strong> You retain all existing copyright, ownership, and intellectual property rights in and to any 3D models, files, and assets you import, upload, or render within the Application. LambDev asserts no ownership, copyright, or proprietary claim over your imported assets.</li>
           <li><strong>5.2. Representation and Warranty of Non-Infringement:</strong> You represent and warrant that you hold all necessary licenses, patents, trademarks, copyrights, or legal permissions required to import, display, and process your chosen 3D assets within the Application. You agree not to upload or visualize any content that infringes or misappropriates any third-party intellectual property or privacy rights.</li>
@@ -624,10 +700,8 @@
 
       <!-- Section 6 -->
       <section id="section-6">
-        <div class="section-header">
-          <h2>6. Disclaimer of Warranties</h2>
-        </div>
-        <div class="caps-box">
+        <h2 class="section-title">6. Disclaimer of Warranties</h2>
+        <div class="legal-caps-box">
           TO THE MAXIMUM EXTENT PERMITTED UNDER APPLICABLE LAW:
           <br><br>
           THE APPLICATION IS PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS, WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS, IMPLIED, STATUTORY, OR OTHERWISE, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT.
@@ -638,10 +712,8 @@
 
       <!-- Section 7 -->
       <section id="section-7">
-        <div class="section-header">
-          <h2>7. Limitation of Liability</h2>
-        </div>
-        <div class="caps-box">
+        <h2 class="section-title">7. Limitation of Liability</h2>
+        <div class="legal-caps-box">
           TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL LAMBDEV, ITS DEVELOPERS, OR AFFILIATES BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES (INCLUDING LOSS OF DATA, PROFITS, REVENUE, GOODWILL, OR HARDWARE FAILURE), ARISING OUT OF OR IN CONNECTION WITH YOUR USE OR INABILITY TO USE THE APPLICATION, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
           <br><br>
           LAMBDEV'S TOTAL AGGREGATE LIABILITY ARISING FROM OR RELATING TO THESE TERMS OR THE SERVICE SHALL NOT EXCEED THE AMOUNT ACTUALLY PAID BY YOU TO LAMBDEV FOR THE SPECIFIC IN-APP PURCHASE GIVING RISE TO THE CLAIM, OR FIFTY U.S. DOLLARS ($50.00 USD), WHICHEVER IS GREATER.
@@ -651,17 +723,13 @@
 
       <!-- Section 7A -->
       <section id="section-7a">
-        <div class="section-header">
-          <h2>7A. Privacy and Permissions</h2>
-        </div>
+        <h2 class="section-title">7A. Privacy and Permissions</h2>
         <p>The Application's collection and use of personal information, device permissions, camera or media access, advertising technologies, and purchase-related information are described in LambDev's <a href="https://privacypolicyandterms.flockred.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>. The Privacy Policy should be made available through the Application and the relevant app store listing. You are responsible for reviewing it before using features that require device permissions.</p>
       </section>
 
       <!-- Section 8 -->
       <section id="section-8">
-        <div class="section-header">
-          <h2>8. Governing Law and Dispute Resolution</h2>
-        </div>
+        <h2 class="section-title">8. Governing Law and Dispute Resolution</h2>
         <ul>
           <li><strong>8.1. Governing Law:</strong> These Terms and any dispute arising out of or related to the Application shall be governed by the laws of <strong>Mexico</strong>, without regard to its conflict-of-law principles. Any dispute shall be submitted to the competent courts located in the Mexican state where the Service Provider has their principal domicile, unless applicable law requires otherwise. Nothing in these Terms limits mandatory consumer-protection, privacy, refund, or other legal rights available to Users under the laws of their country or region.</li>
           <li><strong>8.2. Informal Dispute Resolution:</strong> Before initiating formal legal action, you agree to contact us at <a href="mailto:guillermoantoniocor@gmail.com">guillermoantoniocor@gmail.com</a> and make a good-faith effort to resolve the dispute informally for at least thirty (30) days.</li>
@@ -672,9 +740,7 @@
 
       <!-- Section 9 -->
       <section id="section-9">
-        <div class="section-header">
-          <h2>9. Modifications and Severability</h2>
-        </div>
+        <h2 class="section-title">9. Modifications and Severability</h2>
         <ul>
           <li><strong>9.1. Modifications:</strong> We reserve the right to revise or modify these Terms at our discretion. The updated date will reflect the most current revision. Continued use of the Application after revised Terms take effect constitutes your binding agreement to the amended Terms.</li>
           <li><strong>9.2. Severability:</strong> If any provision of these Terms is found to be unlawful, void, or unenforceable, that provision shall be deemed severable and shall not affect the validity and enforceability of any remaining provisions. The Application's collection and use of personal information are described in LambDev's <a href="https://privacypolicyandterms.flockred.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</li>
@@ -686,95 +752,104 @@
         <p>&copy; 2026 LambDev. All rights reserved. | <a href="https://privacypolicyandterms.flockred.com/privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></p>
       </footer>
     </article>
-  </div>
+  </main>
 
-  <!-- Back to Top Button -->
-  <button class="back-to-top-btn" id="backToTopBtn" aria-label="Back to Top">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 15l-6-6-6 6"/></svg>
+  <!-- Back to Top Fixed Button -->
+  <button class="back-to-top" id="backToTopBtn" aria-label="Back to Top">
+    <svg viewBox="0 0 24 24">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
   </button>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const drawer = document.getElementById('tocDrawer');
-      const overlay = document.getElementById('drawerOverlay');
-      const openBtnNavbar = document.getElementById('openTocNavbar');
-      const openBtnFloating = document.getElementById('openTocFloating');
-      const closeBtn = document.getElementById('closeDrawerBtn');
-      const backToTopBtn = document.getElementById('backToTopBtn');
-      const tocLinks = document.querySelectorAll('#tocNavList a');
-      const sections = document.querySelectorAll('section');
+    (function () {
+      function initTOC() {
+        var drawer = document.getElementById('tocDrawer');
+        var backdrop = document.getElementById('drawerBackdrop');
+        var navBtn = document.getElementById('openDrawerNavbarBtn');
+        var fabBtn = document.getElementById('openDrawerFloatingBtn');
+        var closeBtn = document.getElementById('closeDrawerBtn');
+        var backToTopBtn = document.getElementById('backToTopBtn');
+        var links = document.querySelectorAll('#drawerNavList a');
+        var sections = document.querySelectorAll('section[id]');
 
-      // Function to open drawer
-      function openDrawer() {
-        drawer.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-      }
+        if (!drawer || !backdrop) return;
 
-      // Function to close drawer
-      function closeDrawer() {
-        drawer.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-
-      // Event listeners for open/close
-      if (openBtnNavbar) openBtnNavbar.addEventListener('click', openDrawer);
-      if (openBtnFloating) openBtnFloating.addEventListener('click', openDrawer);
-      if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
-      if (overlay) overlay.addEventListener('click', closeDrawer);
-
-      // Close drawer with Escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && drawer.classList.contains('active')) {
-          closeDrawer();
-        }
-      });
-
-      // Smooth navigation and automatic drawer closing on link click
-      tocLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          closeDrawer();
-        });
-      });
-
-      // Scroll Spy to highlight active section in TOC and show Back-to-Top
-      window.addEventListener('scroll', () => {
-        const scrollPosition = window.scrollY;
-
-        // Toggle Back-To-Top button visibility
-        if (scrollPosition > 350) {
-          backToTopBtn.classList.add('visible');
-        } else {
-          backToTopBtn.classList.remove('visible');
+        function openDrawer() {
+          drawer.classList.add('active');
+          backdrop.classList.add('active');
+          document.body.style.overflow = 'hidden';
         }
 
-        // Active link tracking
-        let currentSectionId = '';
-        sections.forEach(section => {
-          const sectionTop = section.offsetTop - 120;
-          const sectionHeight = section.offsetHeight;
-          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            currentSectionId = section.getAttribute('id');
+        function closeDrawer() {
+          drawer.classList.remove('active');
+          backdrop.classList.remove('active');
+          document.body.style.overflow = '';
+        }
+
+        if (navBtn) navBtn.addEventListener('click', openDrawer);
+        if (fabBtn) fabBtn.addEventListener('click', openDrawer);
+        if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+        if (backdrop) backdrop.addEventListener('click', closeDrawer);
+
+        // Escape key to close
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && drawer.classList.contains('active')) {
+            closeDrawer();
           }
         });
 
-        tocLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${currentSectionId}`) {
-            link.classList.add('active');
-          }
+        // Close drawer when any link is clicked
+        links.forEach(function (link) {
+          link.addEventListener('click', function () {
+            closeDrawer();
+          });
         });
-      });
 
-      // Back to Top Click
-      backToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    });
+        // Scroll listener for back-to-top and active section highlight
+        window.addEventListener('scroll', function () {
+          var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+          // Toggle Back to Top button
+          if (backToTopBtn) {
+            if (scrollY > 300) {
+              backToTopBtn.classList.add('visible');
+            } else {
+              backToTopBtn.classList.remove('visible');
+            }
+          }
+
+          // Active link spy
+          var currentId = '';
+          sections.forEach(function (section) {
+            var top = section.offsetTop - 140;
+            var height = section.offsetHeight;
+            if (scrollY >= top && scrollY < top + height) {
+              currentId = section.getAttribute('id');
+            }
+          });
+
+          links.forEach(function (link) {
+            link.classList.remove('active-link');
+            if (currentId && link.getAttribute('href') === '#' + currentId) {
+              link.classList.add('active-link');
+            }
+          });
+        }, { passive: true });
+
+        if (backToTopBtn) {
+          backToTopBtn.addEventListener('click', function () {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          });
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTOC);
+      } else {
+        initTOC();
+      }
+    })();
   </script>
 </body>
 </html>
