@@ -137,6 +137,6 @@ Any notice relating to a dispute must be sent to **guillermoantoniocor@gmail.com
 
 * **9.2. Severability:**  
   If any provision of these Terms is found to be unlawful, void, or unenforceable, that provision shall be deemed severable and shall not affect the validity and enforceability of any remaining provisions.
-The Application's collection and use of personal information are described in LambDev's [Privacy Policy](https://TU-DOMINIO/privacy_policy).
+The Application's collection and use of personal information are described in LambDev's [Privacy Policy](https://privacypolicyandterms.flockred.com/privacy/).
 * **9.3. Suspension and Termination:**  
 LambDev may suspend or terminate access to the Application or particular features when reasonably necessary to address fraud, abuse, security risks, legal requirements, or a material breach of these Terms. We may also discontinue the Application or a feature. Where required by law, we will provide any applicable notice, refund, or other remedy. Termination does not remove rights or obligations that by their nature should continue, including intellectual-property, limitation-of-liability, dispute-resolution, and indemnification provisions.
