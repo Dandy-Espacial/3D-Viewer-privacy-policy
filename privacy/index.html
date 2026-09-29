@@ -329,37 +329,40 @@
     /* Floating Quick-Access Action Button */
     .fab-menu {
       position: fixed;
-      bottom: 1.5rem;
-      left: 1.5rem;
-      z-index: 99980;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
+      bottom: 24px;
+      left: 24px;
+      z-index: 99999;
       background: #0f172a;
       color: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 999px;
-      padding: 0.65rem 1.15rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      border: 2px solid #334155;
+      padding: 12px 20px;
+      border-radius: 9999px;
+      font-size: 0.95rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: transform 0.2s ease, background-color 0.2s ease;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
     }
 
     .fab-menu:hover {
       background: #1e293b;
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.35);
     }
 
     .fab-menu svg {
-      width: 17px;
-      height: 17px;
-      stroke: currentColor;
-      stroke-width: 2.2;
+      width: 22px;
+      height: 22px;
+      stroke: #38bdf8;
+      stroke-width: 2.4;
       stroke-linecap: round;
       stroke-linejoin: round;
       fill: none;
+      display: block;
+      flex-shrink: 0;
     }
 
     /* Back-to-Top Button */
